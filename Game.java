@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Game {
     private List<Player> players;
@@ -184,43 +185,43 @@ public class Game {
     }
     
     public void forceDraw(Player player, int count) {
-        for (int i = 0; i < count; i++) {
-            Card card = drawCard();
-            if (card != null) {
-                player.addCard(card);
-            }
+    for (int i = 0; i < count; i++) {
+        Card card = drawCard();
+        if (card != null) {
+            player.addCard(card);
         }
     }
-    
-    private Card drawCard() {
-        // Check if deck is empty
-        if (deck.isEmpty()) {
-            System.out.println("Deck is empty. Reshuffling discard pile...");
-            reshuffleDiscardPile();
-        }
-        
-        return deck.draw();
+}
+
+private Card drawCard() {
+    // Check if deck is empty
+    if (deck.isEmpty()) {
+        System.out.println("Deck is empty. Reshuffling discard pile...");
+        reshuffleDiscardPile();
     }
     
-    private void reshuffleDiscardPile() {
-        if (discardPile.size() <= 1) {
-            System.out.println("Warning: Not enough cards to reshuffle!");
-            return;
-        }
-        
-        // Keep the top card, reshuffle the rest
-        Card top = discardPile.remove(discardPile.size() - 1);
-        deck.addCards(new ArrayList<>(discardPile));
-        discardPile.clear();
-        discardPile.add(top);
+    return deck.draw();
+}
+
+private void reshuffleDiscardPile() {
+    if (discardPile.size() <= 1) {
+        System.out.println("Warning: Not enough cards to reshuffle!");
+        return;
     }
     
-    public Player getNextPlayer() {
-        int nextIndex = (currentPlayerIndex + direction + players.size()) % players.size();
-        return players.get(nextIndex);
-    }
-    
-    private void moveToNextPlayer() {
-        currentPlayerIndex = (currentPlayerIndex + direction + players.size()) % players.size();
-    }
+    // Keep the top card, reshuffle the rest
+    Card top = discardPile.remove(discardPile.size() - 1);
+    deck.addCards(new ArrayList<>(discardPile));
+    discardPile.clear();
+    discardPile.add(top);
+}
+
+public Player getNextPlayer() {
+    int nextIndex = (currentPlayerIndex + direction + players.size()) % players.size();
+    return players.get(nextIndex);
+}
+
+private void moveToNextPlayer() {
+    currentPlayerIndex = (currentPlayerIndex + direction + players.size()) % players.size();
+}
 }
