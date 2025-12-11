@@ -13,9 +13,7 @@ public class NumberCard extends Card {
 
     @Override
     public boolean canPlay(Card topCard) {
-        if (this.color == topCard.getColor()) {
-            return true;
-        }
+        if (this.color == topCard.getColor()) return true;
 
         if (topCard instanceof NumberCard) {
             return this.number == ((NumberCard) topCard).getNumber();
@@ -26,6 +24,7 @@ public class NumberCard extends Card {
 
     @Override
     public void applyEffect(Game game) {
+
     }
 
     @Override

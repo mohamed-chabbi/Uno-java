@@ -1,4 +1,3 @@
-
 public class WildCard extends Card {
 
     public WildCard() {
@@ -12,10 +11,10 @@ public class WildCard extends Card {
 
     @Override
     public void applyEffect(Game game) {
-    Color chosen = game.chooseColor();
-    this.setColor(chosen);
-    System.out.println("Color changed to " + chosen);
-}
+        Color chosen = game.chooseColor();
+        this.setColor(chosen);
+        System.out.println("Color changed to " + chosen);
+    }
 
     @Override
     public String toString() {

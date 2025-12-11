@@ -18,18 +18,16 @@ public class ActionCard extends Card {
 
     @Override
     public void applyEffect(Game game) {
-        if (action == ActionType.SKIP) {
-            game.skipNextPlayer();
-        }
-        else if (action == ActionType.REVERSE) {
-            game.reverse();
-        }
-        else if (action == ActionType.DRAW_TWO) {
-            Player next = game.getNextPlayer();
-            game.forceDraw(next, 2);
+        switch (action) {
+            case SKIP -> game.skipNextPlayer();
+            case REVERSE -> game.reverse();
+            case DRAW_TWO -> {
+                Player next = game.getNextPlayer();
+                game.forceDraw(next, 2);
+            }
         }
     }
-    
+
     @Override
     public String toString() {
         return color + " " + action;
