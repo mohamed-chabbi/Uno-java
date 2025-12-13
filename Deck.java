@@ -4,10 +4,11 @@ import java.util.List;
 
 public class Deck {
     private List<Card> cards;
-
+    
     public Deck() {
         cards = new ArrayList<>();
         createDeck();
+        shuffle();
     }
 
     private void createDeck() {
@@ -36,8 +37,6 @@ public class Deck {
             cards.add(new WildCard());
             cards.add(new WildDrawFour());
         }
-
-        shuffle();
     }
 
     public void shuffle() {
@@ -46,13 +45,13 @@ public class Deck {
 
     public Card draw() {
         if (cards.isEmpty()) {
-            return null; 
+            return null;
         }
         return cards.remove(0);
     }
 
-    public void addCards(List<Card> discardedCards) {
-        cards.addAll(discardedCards);
+    public void addCards(List<Card> newCards) {
+        cards.addAll(newCards);
         shuffle();
     }
 
