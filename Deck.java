@@ -16,7 +16,10 @@ public class Deck {
 
         // Number cards
         for (Color color : colors) {
+            // 0 cards
             cards.add(new NumberCard(color, 0));
+
+            //number cards
             for (int n = 1; n <= 9; n++) {
                 cards.add(new NumberCard(color, n));
                 cards.add(new NumberCard(color, n));
@@ -38,27 +41,24 @@ public class Deck {
             cards.add(new WildDrawFour());
         }
     }
-
+   
+   //t5lt
     public void shuffle() {
         Collections.shuffle(cards);
     }
-
+    //tn7i une cart + check ida deck vide
     public Card draw() {
         if (cards.isEmpty()) {
             return null;
         }
         return cards.remove(0);
     }
-
+    //ns79ha fl gqme
     public void addCards(List<Card> newCards) {
         cards.addAll(newCards);
         shuffle();
     }
-
-    public int size() {
-        return cards.size();
-    }
-
+    //check ida frgha
     public boolean isEmpty() {
         return cards.isEmpty();
     }
