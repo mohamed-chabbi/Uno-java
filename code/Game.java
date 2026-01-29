@@ -76,7 +76,7 @@ public class Game {
     private void takeTurn(Player player) {
         System.out.println("\n========================================");
         System.out.println("Top card: " + topCard);
-        System.out.println(player.getName() + "'s turn");
+        System.out.println(player.getName() + " turn");
         
         if (!player.hasPlayableCard(topCard)) {
             System.out.println("No playable card. Drawing one card...");
@@ -174,7 +174,7 @@ public class Game {
         discardPile.add(currentTop);
         topCard = currentTop;
         
-        System.out.println("Reshuffled discard pile!");
+        System.out.println("Reshuffled discard pile");
     }
     
     private void moveToNextPlayer() {
@@ -187,13 +187,13 @@ public class Game {
     
     // Methods called by cards
     public void skipNextPlayer() {
-        System.out.println("⏭️ Skip!");
+        System.out.println("Skip");
         moveToNextPlayer();
     }
     
     public void reverse() {
         clockwise = !clockwise;
-        System.out.println("🔄 Reverse!");
+        System.out.println("Reverse");
     }
     
     public void forceDraw(Player player, int numberOfCards) {

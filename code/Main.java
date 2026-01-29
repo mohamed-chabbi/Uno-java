@@ -1,17 +1,3 @@
-/*
-import java.util.List;
-
-public class Main {
-    public static void main(String[] args) {
-        List<String> names = List.of("human", "bot1", "bot2", "bot3");
-        Game game = new Game(names);
-        game.start();
-    }
-}
-*/
-
-//costume
-/*
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -46,7 +32,7 @@ public class Main {
             playerNames.add("Bot" + i);
         }
         
-        // Show configuration
+        // Show conf
         System.out.println("\nGame configuration:");
         System.out.println("Human players: " + humanPlayers);
         System.out.println("Bot players: " + botPlayers);
@@ -60,4 +46,3 @@ public class Main {
         sc.close();
     }
 }
-*/
