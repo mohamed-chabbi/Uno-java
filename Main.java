@@ -8,37 +8,31 @@ public class Main {
         
         System.out.println("=== UNO Game Setup ===");
         
-        // Ask for number of human players (1-4)
         int humanPlayers;
         do {
             System.out.print("Enter number of human players (1-4): ");
             humanPlayers = sc.nextInt();
-            sc.nextLine(); // Consume newline
+            sc.nextLine();
         } while (humanPlayers < 1 || humanPlayers > 4);
         
-        // Create player list
         List<String> playerNames = new ArrayList<>();
         
-        // Add human players names
         for (int i = 1; i <= humanPlayers; i++) {
             System.out.print("Enter name for Human Player " + i + ": ");
             String name = sc.nextLine().trim();
             playerNames.add(name);
         }
         
-        // Add bots
         int botPlayers = 4 - humanPlayers;
         for (int i = 1; i <= botPlayers; i++) {
             playerNames.add("Bot" + i);
         }
         
-        // Show conf
         System.out.println("\nGame configuration:");
         System.out.println("Human players: " + humanPlayers);
         System.out.println("Bot players: " + botPlayers);
         System.out.println("Players: " + playerNames);
         
-        // Start the game
         System.out.println("\n=== Starting Game ===");
         Game game = new Game(playerNames);
         game.start();

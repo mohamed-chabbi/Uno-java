@@ -13,42 +13,40 @@ public class Game {
     private Scanner scanner;
     
     public Game(List<String> playerNames) {
-        this.players = new ArrayList<>();       //players rahom f ine list
-        this.deck = new Deck();                 //108 card
-        this.discardPile = new ArrayList<>();   //la pile li n7to fiha kikono nl3bo
+        this.players = new ArrayList<>();
+        this.deck = new Deck();
+        this.discardPile = new ArrayList<>();
         this.scanner = new Scanner(System.in);
-        this.clockwise = true;                 //itijah
-        this.gameOver = false;                 // win
-        this.currentPlayerIndex = 0;           // li rah yl3b
+        this.clockwise = true;
+        this.gameOver = false;
+        this.currentPlayerIndex = 0;
         
-        //nd5l les joueurs (1 human and 3 bots)
         for (int i = 0; i < playerNames.size(); i++) {
             boolean isBot = (i != 0);
             players.add(new Player(playerNames.get(i), isBot));
         }
     }
-    // main game loop
     public void start() {
         System.out.println("=== UNO Game ===");
         
-        dealCards();  //les joueurs ydo 7 cards (method line 54)
-        initializeDiscardPile(); //draw first card (method line 66)
+        dealCards();
+        initializeDiscardPile();
         
-        while (!gameOver) { //check game status
-            Player currentPlayer = players.get(currentPlayerIndex); //save the player in current player bch n5dm m3h brk
-            takeTurn(currentPlayer); //method line 76
+        while (!gameOver) {
+            Player currentPlayer = players.get(currentPlayerIndex);
+            takeTurn(currentPlayer);
             
-            if (currentPlayer.getHandSize() == 0) { //current player ida l3b ou hand t3a wlat vide == 0 yrb7 ou n5rjo ml game.start
+            if (currentPlayer.getHandSize() == 0) {
                 gameOver = true;
-                System.out.println("\n🎉 " + currentPlayer.getName() + " WINS! 🎉");
+                System.out.println("\n🎉 " + currentPlayer.getName() + " WINS! ");
                 break;
             }
             
-            moveToNextPlayer(); //method line 180
+            moveToNextPlayer();
         }
         
         scanner.close();
-        showFinalHands(); // afficher les carts t3 les joueur li 5sro methos line 241
+        showFinalHands();
     }
     
     private void dealCards() {
@@ -64,7 +62,6 @@ public class Game {
     }
     
     private void initializeDiscardPile() {
-    // Draw until we get a num card
     do {
         topCard = drawCard();
     } while (topCard != null && topCard.getType() != CardType.NUMBER);
@@ -185,7 +182,6 @@ public class Game {
         }
     }
     
-    // Methods called by cards
     public void skipNextPlayer() {
         System.out.println("Skip");
         moveToNextPlayer();
@@ -217,10 +213,8 @@ public class Game {
     Player currentPlayer = players.get(currentPlayerIndex);
     
     if (currentPlayer.isBot()) {
-        return Color.RED; // Bots always choose RED
+        return Color.RED;
     }
-    
-    // Human chooses
     System.out.println("\nChoose color:");
     System.out.println("1. RED   2. GREEN   3. BLUE   4. YELLOW");
     
@@ -234,7 +228,7 @@ public class Game {
         case 2 -> Color.GREEN;
         case 3 -> Color.BLUE;
         case 4 -> Color.YELLOW;
-        default -> Color.RED; //ida ghlt
+        default -> Color.RED;
     };
 }
     
